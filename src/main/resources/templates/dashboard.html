@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css" /> <!-- Link to external stylesheets -->
+</head>
+<body>
+    <header>
+        <h1>Welcome, <span th:text="${appUser.username}">User</span>!</h1> <!-- Display username -->
+        <nav>
+            <ul>
+                <li><a href="/profile" th:href="@{/profile}">Profile</a></li>
+                <li><a href="/settings" th:href="@{/settings}">Settings</a></li>
+                <li><a href="/services" th:href="@{/services}">Services</a></li>
+                <li><a href="/logout" th:href="@{/logout}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Your Account Overview</h2>
+        <div>
+           
+            <!-- Add more account details here -->
+        </div>
+    </section>
+
+    <section>
+        <h2>Notifications</h2>
+        <ul>
+            <li th:each="notification : ${notifications}">
+                <p th:text="${notification.message}">Notification message goes here</p>
+            </li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 YourBank. All rights reserved.</p>
+    </footer>
+</body>
+</html>

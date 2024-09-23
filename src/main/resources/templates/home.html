@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bank Application</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images.moneycontrol.com/static-mcnews/2022/08/banking2-1.jpg?impolicy=website&width=770&height=431');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh; /* Full page image */
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1, p {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add text shadow for better readability */
+        }
+
+        .btn-box {
+            display: inline-block;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+            border-radius: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 th:text="${message}">Default Message</h1> <!-- Displays the message attribute -->
+    <p>Welcome to the Bank!</p>
+
+    <div class="btn-box">
+        <a href="/branches" class="btn">Let's Go</a>
+    </div>
+
+</body>
+</html>

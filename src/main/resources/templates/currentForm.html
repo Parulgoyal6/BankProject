@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savings Account Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #e6f2ff;
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #0078d4; /* SBI blue border */
+        }
+        .section-title h4 {
+            background-color: #0078d4;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .form-check-label {
+            font-weight: normal;
+        }
+        .btn-primary {
+            background-color: #0078d4;
+            border-color: #0078d4;
+        }
+        .btn-primary:hover {
+            background-color: #0056a0;
+            border-color: #004080;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-control {
+            border: 1px solid #0078d4;
+        }
+        .form-control:focus {
+            border-color: #0056a0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+        .form-text {
+            font-size: 0.875em;
+        }
+        .form-check-input:checked ~ .form-check-label::before {
+            background-color: #0078d4;
+            border-color: #0078d4;
+        }
+        .alert-info {
+            background-color: #e7f1ff;
+            border-color: #0078d4;
+            color: #0056a0;
+        }
+        .form-control-file {
+            border: 1px solid #0078d4;
+        }
+        .form-control-file:focus {
+            border-color: #0056a0;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="form-container">
+        <h2 class="text-center" style="color: #0078d4;">Current Account Form</h2>
+        <form th:action="@{/submit}" method="post" enctype="multipart/form-data">>
+            <!-- Personal Details -->
+            <div class="section-title">
+                <h4>Personal Details</h4>
+            </div>
+            <!-- Title (Mr., Ms., Mrs., Other) -->
+            <div class="form-group">
+                <label>Title</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="title" id="mr" value="Mr.">
+                    <label class="form-check-label" for="mr">Mr.</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="title" id="ms" value="Ms.">
+                    <label class="form-check-label" for="ms">Ms.</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="title" id="mrs" value="Mrs.">
+                    <label class="form-check-label" for="mrs">Mrs.</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="title" id="other" value="Other">
+                    <label class="form-check-label" for="other">Other</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">Full Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                
+               <div class="form-group col-md-6">
+                    <label for="fatherName">Father's/Husband's/Guardian's Name</label>
+                    <input type="text" class="form-control" id="fatherName" name="fatherName" placeholder="Enter name" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" class="form-control" name="dob" id="dob" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" class="form-control" required>
+                        <option selected>Choose...</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="nationality">Nationality</label>
+                    <input type="text" name="nationality" class="form-control" id="nationality" placeholder="Enter nationality" required>
+                </div>
+            </div>
+
+            <!-- Marital Status -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="motherName">Mother's Name</label>
+                    <input type="text" class="form-control" id="motherName" name="motherName" placeholder="Enter mother's name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="maritalStatus">Marital Status</label>
+                    <select id="maritalStatus" name="maritalStatus" class="form-control" required>
+                        <option selected>Choose...</option>
+                        <option>Single</option>
+                        <option>Married</option>
+                        <option>Divorced</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Adhaar Details -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="aadhaarNumber">Aadhaar Number</label>
+                    <input type="text" name="aadhaarNumber" class="form-control" id="aadhaarNumber" placeholder="Enter Aadhaar number" pattern="\d{12}" maxlength="12" required>
+                    <small class="form-text text-muted">Aadhar number must be 12 digits long.</small>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="parentAadhaar">Father's/Mother's Aadhaar Number</label>
+                    <input type="text" name="parentAadhaar" class="form-control" id="parentAadhaar" placeholder="Enter parent's Aadhaar number" pattern="\d{12}" maxlength="12">
+                    <small class="form-text text-muted">Aadhar number must be 12 digits long.</small>
+                </div>
+            </div>
+
+            <!-- Correspondence Address -->
+            <div class="section-title">
+                <h4>Correspondence Address</h4>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="address">Landmark/Street</label>
+                    <input type="text" name="address" class="form-control" id="address" placeholder="Enter address" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="city">City</label>
+                    <input type="text" name="city" class="form-control" id="city" placeholder="Enter city" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="pin">Pin</label>
+                    <input type="number" name="pin" class="form-control" id="pin" pattern="\d{6}" placeholder="Enter pin code" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="state">State</label>
+                    <input type="text" name="state" class="form-control" id="state" placeholder="Enter state" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="phone">Telephone Number</label>
+                    <input type="number" name="phone" class="form-control" id="phone" placeholder="Enter telephone number">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="number" name="mobile" class="form-control" id="mobile" placeholder="Enter mobile number" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <div class="alert alert-info" role="alert">
+            <strong>Note:</strong> Your mobile number will be used for sending messages and important notifications.
+        </div>
+    </div>
+            </div>
+
+            <!-- Permanent Address -->
+            <div class="section-title">
+                <h4>Permanent Address</h4>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="sameAddress">
+                <label class="form-check-label" for="sameAddress">Same as Correspondence Address</label>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="permAddress">Landmark/Street</label>
+                    <input type="text" name="permAddress" class="form-control" id="permAddress" placeholder="Enter address">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="permCity">City</label>
+                    <input type="text" class="form-control" name="permCity" id="permCity" placeholder="Enter city">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="permPin">Pin</label>
+                    <input type="number" name="permPin" class="form-control" id="permPin" placeholder="Enter pin code">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="permState">State</label>
+                    <input type="text" name="permState" class="form-control" id="permState" placeholder="Enter state">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="fax">Fax Number</label>
+                    <input type="number" name="fax" class="form-control" id="fax" placeholder="Enter fax number">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+                </div>
+            </div>
+
+            <!-- Additional Details -->
+            <div class="section-title">
+                <h4>Additional Details</h4>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="income">Income</label>
+                    <select id="income" name="income" class="form-control" required>
+                        <option selected>Choose...</option>
+                        <option>Monthly</option>
+                        <option>Annually</option>
+                    </select>
+                </div>
+                 <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="assets">Assets</label>
+                    <input type="number" name="assets" class="form-control" id="assets" placeholder="Enter Assets">
+                </div>
+            </div>
+                
+                <div class="form-group col-md-6">
+                    <label for="religion">Religion</label>
+                    <select id="religion" name="religion" class="form-control" required>
+                        <option selected>Choose...</option>
+                        <option>Hindu</option>
+                        <option>Muslim</option>
+                        <option>Christian</option>
+                        <option>Sikh</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                 <div class="form-group col-md-6">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" class="form-control" required>
+                        <option selected>Choose...</option>
+                        <option>General</option>
+                        <option>OBC</option>
+                        <option>SC</option>
+                        <option>ST</option>
+                    </select>
+                </div>
+                 <div class="form-group col-md-6">
+                    <label for="educationQualification">Education Qualification</label>
+                    <select id="educationQualification" name="educationQualification" class="form-control" required>
+                        <option selected>Choose...</option>
+                        <option>Non-Graduate</option>
+                        <option>Graduate</option>
+                        <option>Post-Graduate</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                 <!-- Initially hidden text field for "Other" -->
+    <div class="form-group col-md-4" id="otherGenderField" style="display: none;">
+        <label for="otherGender">Please specify</label>
+        <input type="text" class="form-control" id="otherGender" placeholder="Enter gender">
+    </div>
+            </div>
+            <div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="modeOfOperation">Mode of Operation</label>
+        <select id="modeOfOperation" name="modeOfOperation" class="form-control" onchange="showOtherField('modeOfOperation', 'otherModeField')">
+            <option selected>Choose...</option>
+            <option>Self</option>
+            <option>Either or Survivor</option>
+            <option>Former or Survivor</option>
+            <option>Any one or Survivor</option>
+            <option>Jointly</option>
+            <option>Other</option>
+        </select>
+    </div>
+
+    <!-- Hidden text field for "Other" -->
+    <div class="form-group col-md-6" id="otherModeField" style="display: none;">
+        <label for="otherMode">Please specify</label>
+        <input type="text" class="form-control" id="otherMode" placeholder="Enter mode of operation">
+    </div>
+</div>
+        <!-- Specimen Signature Section -->
+<div class="section-title">
+    <h4>Attach Documents</h4>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="photoUpload">Attach Photo</label>
+        <input type="file" class="form-control-file" name="photoUpload" id="photoUpload" accept="image/*">
+         <img id="photoPreview" src="#" alt="Photo Preview" style="display: none; width: 100%; margin-top: 10px;">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="signatureUpload">Attach Signature</label>
+        <input type="file" class="form-control-file" name="signatureUpload" id="signatureUpload" accept="image/*">
+         <img id="signaturePreview" src="#" alt="Signature Preview" style="display: none; width: 100%; margin-top: 10px;">
+    </div>
+</div>
+
+            <!-- Submit Button -->
+           
+   
+    <!-- Add fields for other attributes as well -->
+    <button type="submit">Submit</button>
+
+        </form>
+    </div>
+</div>
+<script>
+    function showOtherField(selectId, fieldId) {
+        var selectElement = document.getElementById(selectId);
+        var otherField = document.getElementById(fieldId);
+
+        // Show the text input if "Other" is selected, otherwise hide it
+        if (selectElement.value === "Other") {
+            otherField.style.display = 'block';
+        } else {
+            otherField.style.display = 'none';
+        }
+    }
+    function previewImage(event, previewId) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const previewElement = document.getElementById(previewId);
+            previewElement.src = e.target.result;
+            previewElement.style.display = 'block';
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+
+</script>
+</body>
+</html>

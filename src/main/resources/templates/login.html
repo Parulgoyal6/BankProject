@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Online Banking</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <style>
+    .large{
+   padding:40px;
+            width: 100%;
+            height: 40vh; /* Adjust height as needed */
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20230322/pngtree-online-banking-concept-with-the-businessman-online-banking-concept-with-businessman-photo-image_2078521.jpg');
+            background-size: cover; /* Cover the entire background */
+            background-position: center;
+            background-repeat: no-repeat; /* Prevent repeating the image */
+        }
+       
+       .button-container {
+       
+            display: flex;
+            justify-content: space-between; /* Space buttons evenly */
+        }
+         
+     h1 {
+     
+            text-align:center;
+            font-size: 2.5rem;
+            color: black; /* Text color to contrast with the background image */
+            padding: 10px;
+            background-color:  #e7f1ff;
+            width: 100% /* Rounded corners */
+        }
+   body {
+            font-family: Arial, sans-serif;
+            margin: 0; /* Remove default margin */
+            height: 100vh; /* Full height */
+           
+        }
+
+
+
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 25px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color:  #0078d4;;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+     margin-right: 10px;
+     flex:1;
+     
+}
+
+button:hover {
+    background-color: #2ecc71;
+}
+.reset-button {
+            background-color: #e67e22; /* Different color for reset button */
+        }
+
+.reset-button:hover {
+            background-color: #d35400; /* Darker shade on hover */
+}
+a {
+    text-decoration: none;
+    color: #27ae60;
+}
+
+a:hover {
+    color: #2ecc71;
+}
+ </style>   
+</head>
+<body>
+<div class="large"></div>
+    <h1>Login To Online Banking SBI</h1>
+    <form th:action="@{/login}" th:object="${appUser}" method="post">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" th:field="*{username}" required />
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" th:field="*{password}" required />
+        </div>
+         <div class="button-container">
+            <button type="submit" class="login-button">Login</button>
+            <button type="reset" class="reset-button">Reset</button>
+        </div>
+   
+    <div>
+        <p>New User? <a th:href="@{/register}">Register Here</a></p>
+    </div>
+    </form>
+</body>
+</html>

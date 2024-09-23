@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ATM / Debit Card Application Form</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+       body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-section {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #0078d4; /* SBI blue border */
+        }
+        .form-section h4 {
+            background-color: #0078d4;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+             
+        }
+        .btn-primary {
+            background-color: #0078d4;
+            border-color: #0078d4;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #0056a0;
+        }
+        .form-control {
+            border: 1px solid #0078d4;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+        }
+        .form-control:focus {
+            border-color: #0056a0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+    </style>
+</head>
+<body>
+
+    <h2>CREDIT CARD APPLICATION FORM</h2>
+    <p>
+        Thank you for applying for the State Bank Credit Card. To help us process your request quickly, 
+        please fill this form as per the instructions overleaf. If you have any questions, please check with your 
+        Branch Official. We are committed to making your life simpler with the State Bank CARDs.
+    </p>
+
+    <form th:action="@{/submitCreditCardForm}" method="post">
+        <div class="form-section">
+            <h4>Application Details</h4>
+             <div class="form-group">
+            <label>Application No:</label>
+            <input type="text" name="applicationNo" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Name:</label>
+            <input type="text" name="name" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Name as you would like it on the card (Max 25 letters):</label>
+            <input type="text" name="nameOnCard" maxlength="25" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Address:</label>
+            <input type="text" name="address" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Town/City:</label>
+            <input type="text" name="city" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>State:</label>
+            <input type="text" name="state" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Telephone:</label>
+            <input type="text" name="telephone" class="form-control"><br>
+			</div>
+			 <div class="form-group">
+            <label>Email:</label>
+            <input type="email" name="email" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Account No:</label>
+            <input type="text" name="accountNo" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Account Type:</label><br>
+            <input type="radio" name="accountType" value="Savings" required> Savings
+            <input type="radio" name="accountType" value="Current"> Current
+            <input type="radio" name="accountType" value="Overdraft"> Overdraft<br><br>
+			</div>
+			 <div class="form-group">
+            <label>Gender:</label><br>
+            <input type="radio" name="gender" value="Male" required> Male
+            <input type="radio" name="gender" value="Female"> Female<br><br>
+			</div>
+			 <div class="form-group">
+            <label>Type of ATM Card:</label><br>
+            <select name="cardType" required>
+                <option value="ATM-cum-Debit Card">Credit Card</option>
+                <option value="Yuva Card">Yuva Card</option>
+                <option value="International Debit Card">International Credit Card</option>
+                <option value="SBI Gold International Debit Card">SBI Gold International Credit Card</option>
+            </select>
+        </div>
+       
+
+            <h3>DECLARATION</h3>
+            <p>
+                I am aware of the Terms and Conditions governing the use of the Credit Card and agree to abide by them. 
+                The bank may call me at my residence / office in connection with my Credit transactions.
+            </p>
+             <div class="form-group">
+            <label>Place:</label>
+            <input type="text" name="place" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Date:</label>
+            <input type="date" name="date" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Applicant's Signature:</label>
+            <input type="text" name="signature" class="form-control" required><br>
+        </div>
+			
+       
+            <h4>FOR OFFICE USE ONLY</h4>
+             <div class="form-group">
+            <label>Card Type:</label>
+            
+             <select name="card" required>
+                <option value="New">New</option>
+                <option value="Renewal">Renewal</option>
+                <option value="Replacement">Replacement</option>
+                
+            </select>
+			</div>
+			 <div class="form-group">
+            <label>Date:</label>
+            <input type="date" name="officeDate" class="form-control"><br>
+			</div>
+			 <div class="form-group">
+            <label>ATM Branch Code:</label>
+            <input type="text" name="branchCode" class="form-control"><br>
+			</div>
+			 <div class="form-group">
+            <label>CIF of Customer:</label>
+            <input type="text" name="cif" class="form-control"><br>
+			</div>
+			 <div class="form-group">
+            <label>Issue Card (Yes/No):</label>
+            <input type="radio" name="issueCard" value="Yes" required> Yes
+            <input type="radio" name="issueCard" value="No"> No<br><br>
+			</div>
+			 <div class="form-group">
+            <label>Branch Official's Signature & Stamp:</label>
+            <input type="text" name="branchSignature" class="form-control"><br>
+			</div>
+			 <div class="form-group">
+            <label>Old Credit Card No:</label>
+            <input type="text" name="oldCardNo" class="form-control"><br>
+			</div>
+			 <div class="form-group">
+            <label>Ticket No:</label>
+            <input type="text" name="ticketNo" class="form-control"><br>
+        </div>
+</div>
+     
+        <!-- Submit Button -->
+       
+            <button type="submit" class="btn-primary">Submit</button>
+        
+    </form>
+</div>
+</body>
+</html>

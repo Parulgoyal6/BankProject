@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ATM / Debit Card Application Form</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+       body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-section {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #0078d4; /* SBI blue border */
+        }
+        .form-section h4 {
+            background-color: #0078d4;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+             
+        }
+        .btn-primary {
+            background-color: #0078d4;
+            border-color: #0078d4;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #0056a0;
+        }
+        .form-control {
+            border: 1px solid #0078d4;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+        }
+        .form-control:focus {
+            border-color: #0056a0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+    </style>
+</head>
+<body>
+
+    <h2>ATM / DEBIT CARD APPLICATION FORM</h2>
+    <p>
+        Thank you for applying for the State Bank ATM / Debit Card. To help us process your request quickly, 
+        please fill this form as per the instructions overleaf. If you have any questions, please check with your 
+        Branch Official. We are committed to making your life simpler with the State Bank CARDs.
+    </p>
+
+    <form th:action="@{/submitATMForm}" method="post">
+        <div class="form-section">
+            <h4>Application Details</h4>
+             <div class="form-group">
+            <label>Application No:</label>
+            <input type="text" name="applicationNo" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Name:</label>
+            <input type="text" name="name" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Name as you would like it on the card (Max 25 letters):</label>
+            <input type="text" name="nameOnCard" maxlength="25" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Address:</label>
+            <input type="text" name="address" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Town/City:</label>
+            <input type="text" name="city" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>State:</label>
+            <input type="text" name="state" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Telephone:</label>
+            <input type="text" name="telephone" class="form-control"><br>
+			</div>
+			 <div class="form-group">
+            <label>Email:</label>
+            <input type="email" name="email" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Account No:</label>
+            <input type="text" name="accountNo" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Account Type:</label><br>
+            <input type="radio" name="accountType" value="Savings" required> Savings
+            <input type="radio" name="accountType" value="Current"> Current
+            <input type="radio" name="accountType" value="Overdraft"> Overdraft<br><br>
+			</div>
+			 <div class="form-group">
+            <label>Gender:</label><br>
+            <input type="radio" name="gender" value="Male" required> Male
+            <input type="radio" name="gender" value="Female"> Female<br><br>
+			</div>
+			 <div class="form-group">
+            <label>Type of ATM Card:</label><br>
+            <select name="cardType" required>
+                <option value="ATM-cum-Debit Card">ATM-cum-Debit Card</option>
+                <option value="Yuva Card">Yuva Card</option>
+                <option value="International Debit Card">International Debit Card</option>
+                <option value="SBI Gold International Debit Card">SBI Gold International Debit Card</option>
+            </select>
+        </div>
+       
+
+            <h3>DECLARATION</h3>
+            <p>
+                I am aware of the Terms and Conditions governing the use of the ATM Card and agree to abide by them. 
+                The bank may call me at my residence / office in connection with my ATM transactions.
+            </p>
+             <div class="form-group">
+            <label>Place:</label>
+            <input type="text" name="place" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Date:</label>
+            <input type="date" name="date" class="form-control" required><br>
+			</div>
+			 <div class="form-group">
+            <label>Applicant's Signature:</label>
+            <input type="text" name="signature" class="form-control" required><br>
+        </div>
+			
+       
+            <h4>FOR OFFICE USE ONLY</h4>
+             <div class="form-group">
+            <label>Card Type:</label>
+            
+             <select name="card" required>
+                <option value="New">New</option>
+                <option value="Renewal">Renewal</option>
+                <option value="Replacement">Replacement</option>
+                
+            </select>
+			</div>
+			 <div class="form-group">
+            <label>Date:</label>
+            <input type="date" name="officeDate" class="form-control"><br>
+			</div>
+			 <div class="form-group">
+            <label>ATM Branch Code:</label>
+            <input type="text" name="branchCode" class="form-control"><br>
+			</div>
+			 <div class="form-group">
+            <label>CIF of Customer:</label>
+            <input type="text" name="cif" class="form-control"><br>
+			</div>
+			 <div class="form-group">
+            <label>Issue Card (Yes/No):</label>
+            <input type="radio" name="issueCard" value="Yes" required> Yes
+            <input type="radio" name="issueCard" value="No"> No<br><br>
+			</div>
+			 <div class="form-group">
+            <label>Branch Official's Signature & Stamp:</label>
+            <input type="text" name="branchSignature" class="form-control"><br>
+			</div>
+			 <div class="form-group">
+            <label>Old ATM Card No:</label>
+            <input type="text" name="oldCardNo" class="form-control"><br>
+			</div>
+			 <div class="form-group">
+            <label>Ticket No:</label>
+            <input type="text" name="ticketNo" class="form-control"><br>
+        </div>
+</div>
+       <div class="form-section">
+    <h3>ATM CARD TYPES</h3>
+    <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td style="padding: 10px; vertical-align: top;">
+                <strong>ATM-cum-Debit Card (Maestro)</strong><br>
+                <ul style="list-style-type: disc; padding-left: 20px;">
+                    <li>Usual type given to all account holders.</li>
+                    <li>Max 40,000/- withdrawal at ATMs.</li>
+                    <li>Max 50,000/- at Merchant Establishments.</li>
+                    <li>At all ATMs Displaying MasterCard, Maestro, Cirrus Logos.</li>
+                </ul>
+            </td>
+            <td style="padding: 10px; vertical-align: top;">
+                <strong>International Debit Card (Maestro)</strong><br>
+                <ul style="list-style-type: disc; padding-left: 20px;">
+                    <li>Usual type given to all NRE account holders.</li>
+                    <li>Usable at all ATMs around the Globe.</li>
+                    <li>Max 50,000/- withdrawal at ATMs.</li>
+                    <li>Max 1,00,000/- at Merchant Establishments.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 10px; vertical-align: top;">
+                <strong>Yuva Card (Visa)</strong><br>
+                <ul style="list-style-type: disc; padding-left: 20px;">
+                    <li>Only for Youngsters within the age group – 18-30 Years.</li>
+                    <li>Max 50,000/- withdrawal at ATMs.</li>
+                    <li>Max 2,00,000/- at Merchant Establishments.</li>
+                    <li>At all ATMs Displaying Visa Logo. Internet transactions for ticketing, e-commerce, etc.</li>
+                </ul>
+            </td>
+            <td style="padding: 10px; vertical-align: top;">
+                <strong>SBI Gold International Debit Card (Visa / MasterCard)</strong><br>
+                <ul style="list-style-type: disc; padding-left: 20px;">
+                    <li>Only for Customers who maintain their quarterly balance as 50,000/-.</li>
+                    <li>Max 50,000/- withdrawal at ATMs.</li>
+                    <li>Max 2,00,000/- at Merchant Establishments.</li>
+                    <li>Can undertake transactions through the internet for ticketing, e-commerce, etc.</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+
+
+                <!-- Terms and Conditions Section -->
+       
+            <h4>TERMS AND CONDITIONS</h4>
+            <p>
+                Bank means State Bank of India. Card(s) means SBI ATM / Debit Card issued to the customer either in association with 
+                MasterCard / VISA. Cardholder means the customer who has been issued the ATM / Debit Card.
+            </p>
+            <ul>
+                <li>The card is the property of the Bank and shall be returned unconditionally and immediately to the Bank upon request by the Bank.</li>
+                <li>The Bank reserves the right to cancel the card and stop its operations unilaterally without assigning any reason.</li>
+                <li>The Card is non-transferable.</li>
+                <li>The Card Holder is initially allotted a computer-generated 4-digit PIN (Personal Identification Number) which will be in a secured and sealed PIN Mailer. It is mandatory for the card holder to carry out a successful transaction using the PIN at SBI in order to activate the card.</li>
+                <li>Any financial loss due to misuse of the Card will be to the Card Holder's account.</li>
+                <li>Loss of card should be reported at Bank's all India Helpline No. 1800112211 and a ticket number should be obtained to apply for a replacement card. The Branch from where the card was obtained should also be notified in writing.</li>
+                <li>A fresh card will be issued in replacement of a lost/damaged card at a charge of Rs. 200/- plus taxes, if any, at present.</li>
+                <li>The cardholder can request for the regeneration of PIN in case it has been lost or forgotten. The Bank will provide the customer with a new PIN at a charge of Rs. 55/- which will be debited to the customer’s account.</li>
+                <li>The Card Holder wishing to close the designated account or surrender the card facility will give the Bank 10 working days' notice in writing and surrender the Card along with the notice.</li>
+            </ul>
+       
+
+        <!-- Submit Button -->
+       
+            <button type="submit" class="btn-primary">Submit</button>
+        
+    </form>
+</div>
+</body>
+</html>

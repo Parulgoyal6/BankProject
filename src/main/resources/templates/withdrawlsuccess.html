@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Withdrawal Success</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4; /* Light grey background for the body */
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Withdrawal Successful</h2>
+        <p th:text="'Your withdrawal was successful. New balance: Rs. ' + ${message}"></p>
+        <a href="/services" class="btn btn-primary">View More Services</a>
+    </div>
+</body>
+</html>

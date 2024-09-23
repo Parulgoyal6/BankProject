@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Success</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4; /* Light grey background for the body */
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="alert alert-success text-center" role="alert">
+            <h4 class="alert-heading">Success!</h4>
+            <p th:text="${message}">Your account has been opened successfully!</p>
+            <hr>
+            <p class="mb-0">Thank you for choosing SBI!</p>
+        </div>
+        <div class="text-center">
+            <a href="/services" class="btn btn-primary">View More Services</a>
+        </div>
+    </div>
+</body>
+</html>

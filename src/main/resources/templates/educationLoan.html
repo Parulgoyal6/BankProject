@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ 
+    <title>Education Loan Application</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #e6f2ff;
+            font-family: Arial, sans-serif;
+        }
+        .form-section {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #0078d4; /* SBI blue border */
+        }
+        .form-section h4 {
+            background-color: #0078d4;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .form-check-label {
+            font-weight: normal;
+        }
+        .btn-primary {
+            background-color: #0078d4;
+            border-color: #0078d4;
+        }
+        .btn-primary:hover {
+            background-color: #0056a0;
+            border-color: #004080;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-control {
+            border: 1px solid #0078d4;
+        }
+        .form-control:focus {
+            border-color: #0056a0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+        .form-text {
+            font-size: 0.875em;
+        }
+        .form-check-input:checked ~ .form-check-label::before {
+            background-color: #0078d4;
+            border-color: #0078d4;
+        }
+        .alert-info {
+            background-color: #e7f1ff;
+            border-color: #0078d4;
+            color: #0056a0;
+        }
+        .form-control-file {
+            border: 1px solid #0078d4;
+        }
+        .form-control-file:focus {
+            border-color: #0056a0;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <h2>Education Loan Application</h2>
+
+            <form th:action="@{/submitLoan}" method="post">
+                <h4>Application Details</h4>
+                <div class="form-group">
+                    <label>Education Loan Application No:</label>
+                    <input type="number" class="form-control" name="applicationNo" required>
+                </div>
+                <div class="form-group">
+                    <label>Date:</label>
+                    <input type="date" class="form-control" name="applicationDate" required>
+                </div>
+                <div class="form-group">
+                    <label>Bank Branch Code:</label>
+                    <input type="number" class="form-control" name="branchCode" required>
+                </div>
+                <div class="form-group">
+                    <label>Bank Branch Name:</label>
+                    <input type="text" class="form-control" name="branchName" required>
+                </div>
+				 <div class="form-group">
+                <label>Referral Group:</label>
+                <input type="text" class="form-control" name="referralGroup">
+            </div>
+            <div class="form-group">
+                <label>Existing LOS Borrower:</label>
+                <select class="form-control" name="existingBorrower" required>
+                	<option value="Option">Select an Option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Sourcing Entity Type:</label>
+                <select class="form-control" name="sourcingEntityType">
+                	<option value="Option">Select an Option</option>
+                    <option value="Branch">BRANCH</option>
+                    <option value="Mpst">MPST</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Source Code:</label>
+                <input type="number" class="form-control" name="sourceCode">
+            </div>
+            <div class="form-group">
+                <label>Source Officer Code:</label>
+                <input type="number" class="form-control" name="sourceOfficerCode">
+            </div>
+            <div class="form-group">
+                <label>Sourcing Officer Name:</label>
+                <input type="text" class="form-control" name="sourcingOfficerName">
+            </div>
+            <div class="form-group">
+                <label>LOS ID:</label>
+                <input type="number" class="form-control" name="losId">
+            </div>
+            <div class="form-group">
+                <label>LMS/OCAS ID:</label>
+                <input type="number" class="form-control" name="lmsOcasId">
+            </div>
+
+            <h4>TICK THE RELEVANT BOX BELOW</h4>
+            <div class="form-group">
+                <label>Processing Fee Collected:</label>
+                <select class="form-control" name="processingFeeCollected">
+                	<option value="Opt">Select an Option</option>
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                    <option value="NA">N/A</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Stamp Duty Collected:</label>
+                <select class="form-control" name="stampDutyCollected">
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                    <option value="NA">N/A</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>SBI Life Sold:</label>
+                <select class="form-control" name="sbiLifeSold">
+                <option value="Opt">Select an Option</option>
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                    <option value="NA">N/A</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>SBI Loan Insurance Sold:</label>
+                <select class="form-control" name="sbiLoanInsuranceSold">
+                <option value="Opt">Select an Option</option>
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                    <option value="NA">N/A</option>
+                </select>
+            </div>
+				
+                <!-- Additional fields... -->
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Next</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

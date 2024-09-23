@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SBI Fixed Deposit Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <style>
+      body {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            padding: 20px;
+            max-width: 800px;
+            background-color: #f5f5f5;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .checkbox-group input[type="checkbox"] {
+            transform: scale(1.5); /* Increase checkbox size */
+            margin-right: 10px;
+        }
+        h2, h3 {
+            text-align: center;
+            color: #003a6e; /* SBI Blue */
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #003a6e;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="date"], input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .checkbox-group, .radio-group {
+            margin-bottom: 15px;
+        }
+        input[type="checkbox"], input[type="radio"] {
+            margin-right: 5px;
+        }
+        .instructions {
+            color: red;
+            font-style: italic;
+        }
+        .form-section h3 {
+            color: #003a6e;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .form-section {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #003a6e;
+            border-radius: 5px;
+            background-color: #e6f0ff; /* Light Blue */
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #003a6e;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #002a4e;
+        }
+    </style>
+</head>
+<body>
+    <h2>SBI Fixed Deposit Form</h2>
+    
+   
+     <form th:action="@{/submitDeposit}" method="post" enctype="multipart/form-data">
+        <div>
+            <label>Date:</label>
+            <input type="date" name="date" required />
+        </div>
+        <div>
+            <label>Account No:</label>
+            <input type="text" name="accountNo" required />
+        </div>
+
+        <p><strong>Please fill up in BLOCK letters only.</strong></p>
+
+        <h4>SOLE/FIRST HOLDER'S DETAILS</h4>
+        <div>
+            <label>KYC No. (if available):</label>
+            <input type="text" name="kycFirstHolder" />
+        </div>
+        <div>
+            <label>Staff/Senior Citizen/Minor:</label>
+            <select name="holderType">
+                <option value="staff">Staff</option>
+                <option value="senior">Senior Citizen</option>
+                <option value="minor">Minor</option>
+            </select>
+        </div>
+        <div>
+            <label>Date of Birth:</label>
+            <input type="date" name="dobFirstHolder" required />
+        </div>
+        <div>
+            <label>CIF No. (filled by branch):</label>
+            <input type="number" name="cifFirstHolder" />
+        </div>
+        <div>
+            <label>Title:</label>
+            <select name="titleFirstHolder">
+                <option value="mr">Mr.</option>
+                <option value="mrs">Mrs.</option>
+                <option value="ms">Ms.</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div>
+            <label>Name:</label>
+            <input type="text" name="nameFirstHolder" required />
+        </div>
+
+        <h4>SECOND HOLDER'S DETAILS</h4>
+        <div>
+            <label>KYC No. (if available):</label>
+            <input type="text" name="kycSecondHolder" />
+        </div>
+        <div>
+            <label>Date of Birth:</label>
+            <input type="date" name="dobSecondHolder" />
+        </div>
+        <div>
+            <label>CIF No. (filled by branch):</label>
+            <input type="text" name="cifSecondHolder" />
+        </div>
+        <div>
+            <label>Title:</label>
+            <select name="titleSecondHolder">
+                <option value="mr">Mr.</option>
+                <option value="mrs">Mrs.</option>
+                <option value="ms">Ms.</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div>
+            <label>Name:</label>
+            <input type="text" name="nameSecondHolder" />
+        </div>
+
+        
+        <div>
+            <label>Mode of Operation:</label>
+            <select name="modeOfOperation">
+                <option value="self">Self</option>
+                <option value="eitherOrSurvivor">Either or Survivor</option>
+                <option value="formerOrSurvivor">Former or Survivor</option>
+                <option value="anyoneOfSurvivor">Any one of Survivor</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        
+        <div>
+            <label>Type of Deposit:</label>
+            <select name="depositType">
+                <option value="termDeposit">Term Deposit</option>
+                <option value="specialTermDeposit">Special Term Deposit</option>
+                <option value="annuityDeposit">Annuity Deposit</option>
+            </select>
+        </div>
+        <div>
+            <label>Amount (Rs):</label>
+            <input type="text" name="amount" required />
+        </div>
+        <div>
+            <label>Amount (in words):</label>
+            <input type="text" name="amountWords" required />
+        </div>
+
+        
+        <div>
+            <label>Maturity Instructions:</label>
+            <select name="maturityInstruction">
+                <option value="renewPrincipalPayInterest">Auto renew principal & pay back interest</option>
+                <option value="renewPrincipalInterest">Auto renew principal & interest</option>
+                <option value="payPrincipalInterest">Pay principal & interest</option>
+            </select>
+        </div>
+
+        
+        <div>
+            <label>Payment:</label>
+            <select name="paymentOption">
+                <option value="creditAccount">Credit to my Bank Account</option>
+                <option value="bankersCheque">Banker's Cheque</option>
+            </select>
+        </div>
+        
+       
+
+        <p>Renewal will be done at the then prevailing Interest rate on maturity</p>
+        <div class="checkbox-group">
+            <label>MULTI-OPTION DEPOSIT SCHEME</label>
+            <input type="checkbox" name="modScheme" value="yes" />
+        </div>
+        <p>I/We hereby give content for my/our account for recovering service charges as normally applicable to Savings Bank and Current Account.</p>
+        
+         <div>
+            <label>Linked Saving Bank/Current Account Account No.:</label>
+            <input type="number" name="Bank" />
+        </div>
+        
+        <div class="checkbox-group">
+            <label>Recurring Deposit:</label>
+            <input type="checkbox" name="recurringDeposit" value="yes" />
+        </div>
+        <div class="checkbox-group">
+            <label>Monthly Installment:</label>
+            <input type="checkbox" name="monthlyInstallment" />
+        </div>
+         <div>
+            <label>Amount:</label>
+            <input type="number" name="amountType" />
+        </div>
+        <div>
+            <label>Period (Years):</label>
+            <input type="text" name="periodYears" />
+        </div>
+        <div>
+            <label>Months:</label>
+            <input type="text" name="periodMonths" />
+        </div>
+         <div class="checkbox-group">
+            <label>Standing Instructions:</label>
+            <input type="checkbox" name="standingInstructions" />
+        </div>
+         <div class="checkbox-group">
+            <label>On Maturity, credit proceeds to Account No.:</label>
+            <input type="checkbox" name="Number" />
+        </div>
+         <div>
+            <label>Debit Account No:</label>
+            <input type="number" name="debitAccountNo" />
+        </div>
+
+        <h3>NOMINATION</h3>
+        <div>
+            <p>I/We do not want to nominate any person in this account:</p>
+           <div>
+            <label>Signature of Account Holder:</label>
+            <input type="file" name="accountHolderSignature" required />
+        </div>
+        <div>
+            <label>Signature of Second Account Holder:</label>
+            <input type="file" name="secondAccountHolderSignature" />
+        </div>
+		</div>
+        <h3>NOMINATION DETAILS (Form DA-I)</h3>
+        <div>
+            <label>Nominee Name:</label>
+            <input type="text" name="nomineeName" />
+        </div>
+        <div>
+            <label>Relationship with Depositor:</label>
+            <input type="text" name="nomineeRelationship" />
+        </div>
+        <div>
+            <label>Nominee Age:</label>
+            <input type="number" name="nomineeAge" />
+        </div>
+        <div>
+            <label>Date of Birth of Nominee:</label>
+            <input type="date" name="nomineeDob" />
+        </div>
+        <div>
+            <label>Nominee Address:</label>
+            <input type="text" name="nomineeAddress" />
+        </div>
+        <div>
+            <label>City:</label>
+            <input type="text" name="nomineeCity" />
+        </div>
+        <div>
+            <label>State:</label>
+            <input type="text" name="nomineeState" />
+        </div>
+        <div>
+            <label>KYC No. (if available):</label>
+            <input type="text" name="nomineeKyc" />
+        </div>
+
+        <h3>DECLARATION</h3>
+        <p>
+            I/we hereby give consent for debiting my/our account for recovering service charges as applicable.
+        </p>
+        <div>
+            <label>Signature of Depositor:</label>
+            <input type="file" name="accountDepositorSignature" required />
+        </div>
+        
+
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+   <script>
+    // JavaScript to set the date input max to 18 years ago for both DOB fields
+    window.onload = function() {
+        const dobFirstHolderInput = document.querySelector("input[name='dobFirstHolder']");
+        const dobSecondHolderInput = document.querySelector("input[name='dobSecondHolder']");
+        const nomineeDobInput = document.querySelector("input[name='nomineeDob']");
+        // Get today's date
+        let today = new Date();
+        
+        // Calculate the date 18 years ago
+        let maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+        
+        // Format maxDate as yyyy-mm-dd
+        let maxDateString = maxDate.toISOString().split('T')[0];
+
+        // Set max attribute of both dob input fields to maxDateString
+        dobFirstHolderInput.setAttribute("max", maxDateString);
+        if (dobSecondHolderInput) {
+            dobSecondHolderInput.setAttribute("max", maxDateString);
+        }
+        if (nomineeDobInput) {
+            nomineeDobInput.setAttribute("max", maxDateString);
+        }
+    };
+</script>
+
+</body>
+</html>

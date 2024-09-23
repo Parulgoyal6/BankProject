@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${bank.name}">Bank Services</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #f4f4f4; /* Light grey background for the body */
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #ffffff; /* White background for the container */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 800px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 70px;
+            font-size: 2.5rem;
+            color: #003a70; /* Dark blue color for the heading */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        th {
+            background-color: #003a70; /* Dark blue background for the header */
+            color: #ffffff; /* White text color */
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #ffffff; 
+        }
+        
+        .icon-text {
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .fas {
+            font-size: 2rem; 
+            margin-right: 20px;
+            color: black;
+        }
+
+        .btn-primary {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #003a70; /* Dark blue background for the button */
+            border: none;
+            color: #ffffff; /* White text color */
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            background-color: #002a50; /* Slightly darker blue on hover */
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="container">
+   
+        <h1 th:text="${bank.name}">Bank Name</h1>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Services</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="service : ${bank.services}">
+                    <td>
+                        <div class="icon-text">
+                            <a th:if="${service == 'Personal Loan'}" th:href="@{'/personalLoan'}" class="btn btn-link">
+                                <i class="fas fa-hand-holding-usd"></i> <span th:text="${service}"></span>
+                            </a>
+                            <a th:if="${service == 'Debit Card'}" th:href="@{'/debitCard'}" class="btn btn-link">
+                                <i class="fas fa-credit-card"></i> <span th:text="${service}"></span>
+                            </a>
+                            <a th:if="${service == 'Credit Card'}" th:href="@{'/creditCard'}" class="btn btn-link">
+                                <i class="fas fa-credit-card"></i> <span th:text="${service}"></span>
+                            </a>
+                            <a th:if="${service == 'Withdrawal Form'}" th:href="@{'/withdrawl'}" class="btn btn-link">
+                                <i class="fas fa-money-bill-alt"></i> <span th:text="${service}"></span>
+                            </a>
+                            <a th:if="${service == 'Home Loan'}" th:href="@{'/homeLoan'}" class="btn btn-link">
+                                <i class="fas fa-home"></i> <span th:text="${service}"></span>
+                            </a>
+                            <a th:if="${service == 'Fixed Deposit'}" th:href="@{'/fixedDeposit'}" class="btn btn-link">
+                                <i class="fas fa-piggy-bank"></i> <span th:text="${service}"></span>
+                            </a>
+                            <a th:if="${service == 'Online Banking'}" th:href="@{'/login'}" class="btn btn-link">
+                                <i class="fas fa-laptop"></i> <span th:text="${service}"></span>
+                            </a>
+                            <a th:if="${service == 'Current Account'}" th:href="@{'/currentForm/' + ${service}}" class="btn btn-link">
+                                <i class="fas fa-wallet"></i> <span th:text="${service}"></span>
+                            </a>
+                             <a th:if="${service == 'Education Loan'}" th:href="@{'/educationLoan'}" class="btn btn-link">
+                                <i class="fas fa-school"></i> <span th:text="${service}"></span>
+                            </a>
+                            <a th:if="${service != 'Personal Loan' and service != 'Debit Card' and service != 'Credit Card' and service != 'Fixed Deposit' and service != 'Withdrawal Form' and service != 'Current Account' and service != 'Home Loan' and service != 'Online Banking' and service != 'Education Loan'}" 
+                               th:href="@{'/serviceForm/' + ${service}}" class="btn btn-link">
+                                <i class="fas fa-coins"></i> <span th:text="${service}"></span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/branches" class="btn btn-primary">View Branches</a>
+    </div>
+</body>
+</html>

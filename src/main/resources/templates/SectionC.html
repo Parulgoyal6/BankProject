@@ -1,0 +1,135 @@
+<div class="container">
+    <form action="/submitLoanDetails" method="post" enctype="multipart/form-data">
+        <!-- Section C: Loan Details -->
+        <h4>Section C: Loan Details</h4>
+
+        <!-- Scheme Name -->
+        <div class="form-group">
+            <label for="schemeName">Scheme Name:</label>
+            <select class="form-control" name="schemeName" id="schemeName" required>
+                <option value="Xpress Credit to Teacher">Xpress Credit to Teacher</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+
+        <!-- Loan Details -->
+        <div class="form-group">
+            <label for="netMonthlyIncome">Net Monthly Income:</label>
+            <input type="number" class="form-control" id="netMonthlyIncome" name="netMonthlyIncome" required>
+        </div>
+
+        <div class="form-group">
+            <label for="proposedEMI">Proposed EMI:</label>
+            <input type="number" class="form-control" id="proposedEMI" name="proposedEMI" required>
+        </div>
+
+        <div class="form-group">
+            <label for="emiNmiRatio">EMI/NMI Ratio:</label>
+            <input type="number" class="form-control" id="emiNmiRatio" name="emiNmiRatio" required step="0.01">
+        </div>
+
+        <div class="form-group">
+            <label for="loanAmount">Loan Amount:</label>
+            <input type="number" class="form-control" id="loanAmount" name="loanAmount" required>
+        </div>
+
+        <div class="form-group">
+            <label for="tenureMonths">Tenure (Months):</label>
+            <input type="number" class="form-control" id="tenureMonths" name="tenureMonths" required>
+        </div>
+
+        <div class="form-group">
+            <label for="rateOfInterest">Rate of Interest (%):</label>
+            <input type="number" class="form-control" id="rateOfInterest" name="rateOfInterest" required step="0.01">
+        </div>
+
+        <div class="form-group">
+            <label for="checkOff">Check-Off:</label>
+            <select class="form-control" id="checkOff" name="checkOff" required>
+                <option value="Full">Full</option>
+                <option value="Partial">Partial</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="salaryPackages">Salary Packages:</label>
+            <select class="form-control" id="salaryPackages" name="salaryPackages" required>
+                <option value="SGSP">SGSP</option>
+                <option value="CGSP">CGSP</option>
+                <option value="RSP">RSP</option>
+                <option value="DSP">DSP</option>
+                <option value="PMSP">PMSP</option>
+                <option value="ICGSP">ICGSP</option>
+                <option value="Others">Others (Specify)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="loanPurpose">Loan Purpose:</label>
+            <select class="form-control" id="loanPurpose" name="loanPurpose" required>
+                <option value="Childrens Marriage">Children's Marriage</option>
+                <option value="Education of Children">Education of Children</option>
+                <option value="Medical Travel">Medical Travel</option>
+                <option value="Purpose of Customer Durable">Purpose of Customer Durable</option>
+                <option value="Home Loan">Home Loan</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="processingFees">Processing Fees (Rs.):</label>
+            <input type="number" class="form-control" id="processingFees" name="processingFees" required>
+        </div>
+
+        <div class="form-group">
+            <label for="concessionsPercentage">Concessions (If any) (%):</label>
+            <input type="number" class="form-control" id="concessionsPercentage" name="concessionsPercentage" step="0.01">
+        </div>
+
+        <div class="form-group">
+            <label for="concessionProcessingFee">Concession in Processing Fee (Rs.):</label>
+            <input type="number" class="form-control" id="concessionProcessingFee" name="concessionProcessingFee">
+        </div>
+
+        <!-- Section D: Insurance (Optional) -->
+        <h4>Section D: Insurance (Optional)</h4>
+
+        <div class="form-group">
+            <label>Do you wish to be covered by insurance (e.g., SBI Life)?</label><br>
+            <input type="radio" name="insuranceCover" value="yes" id="insuranceYes" required> Yes<br>
+            <input type="radio" name="insuranceCover" value="no" id="insuranceNo" required> No
+        </div>
+
+        <div class="form-group">
+            <label>If yes, how would you like to pay the premium?</label><br>
+            <input type="radio" name="premiumPaymentOption" value="payPremium" required> I will pay the premium<br>
+            <input type="radio" name="premiumPaymentOption" value="addToLoan" required> Please add the premium to the personal loan amount mentioned above
+        </div>
+
+        <!-- Section E: Declaration -->
+        <h4>Section E: Declaration</h4>
+
+        <p>I/We certify that the information provided by me/us in this application form is true and correct...</p>
+        <!-- Declaration statements go here -->
+
+        <div class="form-group">
+            <label for="applicantSignature">Signature of Applicant:</label><br>
+            <input type="file" id="applicantSignature" name="applicantSignature" required>
+        </div>
+
+        <div class="form-group">
+            <label for="place">Place:</label><br>
+            <input type="text" id="place" name="place" placeholder="Enter place" required>
+        </div>
+
+        <div class="form-group">
+            <label for="date">Date:</label><br>
+            <input type="date" id="date" name="date" required>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit Details</button>
+        </div>
+    </form>
+</div>
